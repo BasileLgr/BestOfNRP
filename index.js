@@ -2,6 +2,18 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require('axios');
 require('dotenv').config();
 
+const http = require('http');
+
+// Créez un serveur minimal pour écouter sur un port
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Le bot Discord fonctionne correctement !\n');
+}).listen(PORT, () => {
+    console.log(`Serveur HTTP démarré sur le port ${PORT}`);
+});
+
+
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
 if (!DISCORD_TOKEN) {
